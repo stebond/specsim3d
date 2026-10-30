@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SPECSIM3D: spectral simulation of anisotropic three-dimensional Gaussian random fields"
+abstract: >-
+  SPECSIM3D is a Fortran program (OpenMP) that generates unconditional and
+  conditional realizations of stationary Gaussian random fields in three
+  dimensions by the spectral random-phase method. It supports spherical,
+  exponential and Gaussian covariance models, nested structures, a nugget
+  effect and full geometric anisotropy, conditioning by kriging of the
+  residual, and output in GSLIB, raw binary, VTK and VTK XML formats.
+type: software
+authors:
+  - family-names: "Bonduà"
+    given-names: "Stefano"
+    email: "stefano.bondua@unibo.it"
+    orcid: "https://orcid.org/0000-0002-1632-5024"
+    affiliation: "Department of Civil, Chemical, Environmental and Materials Engineering (DICAM), University of Bologna, Italy"
+version: "1.0.0"
+date-released: "2026-10-30"
+license: MIT
+keywords:
+  - spectral simulation
+  - Gaussian random fields
+  - geometric anisotropy
+  - fast Fourier transform
+  - geostatistics
+  - Fortran
