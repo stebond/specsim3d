@@ -1,0 +1,22 @@
+model,method,direction,rms_within_range
+spherical,SPECSIM3D,N45E (a = 20),0.0009
+spherical,GSTools,N45E (a = 20),0.145
+spherical,GSTools (modified),N45E (a = 20),0.0048
+spherical,SPECSIM3D,N45W (a = 10),0.0063
+spherical,GSTools,N45W (a = 10),0.1351
+spherical,GSTools (modified),N45W (a = 10),0.011
+spherical,SPECSIM3D,vertical (a = 5),0.0031
+spherical,GSTools,vertical (a = 5),0.1195
+spherical,GSTools (modified),vertical (a = 5),0.009
+exponential,SPECSIM3D,N45E (a = 20),0.0037
+exponential,GSTools,N45E (a = 20),0.0254
+exponential,SPECSIM3D,N45W (a = 10),0.0014
+exponential,GSTools,N45W (a = 10),0.0155
+exponential,SPECSIM3D,vertical (a = 5),0.002
+exponential,GSTools,vertical (a = 5),0.013
+gaussian,SPECSIM3D,N45E (a = 20),0.0034
+gaussian,GSTools,N45E (a = 20),0.0125
+gaussian,SPECSIM3D,N45W (a = 10),0.0039
+gaussian,GSTools,N45W (a = 10),0.0124
+gaussian,SPECSIM3D,vertical (a = 5),0.0023
+gaussian,GSTools,vertical (a = 5),0.0119

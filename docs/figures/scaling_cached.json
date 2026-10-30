@@ -1,0 +1,87 @@
+{
+ "specsim3d_32": {
+  "n": 32,
+  "periodic": [
+   64,
+   64,
+   64
+  ],
+  "wall_s": 0.05572080612182617,
+  "spectrum_s": 0.01,
+  "per_realization_s": 0.0,
+  "rss_mb": 1.953125,
+  "rms": 0.037708284950428946,
+  "nreal": 2
+ },
+ "specsim3d_64": {
+  "n": 64,
+  "periodic": [
+   128,
+   128,
+   128
+  ],
+  "wall_s": 0.10436248779296875,
+  "spectrum_s": 0.03,
+  "per_realization_s": 0.02,
+  "rss_mb": 54.62109375,
+  "rms": 0.019353270972794368,
+  "nreal": 2
+ },
+ "specsim3d_128": {
+  "n": 128,
+  "periodic": [
+   256,
+   256,
+   256
+  ],
+  "wall_s": 0.8881943225860596,
+  "spectrum_s": 0.27,
+  "per_realization_s": 0.27,
+  "rss_mb": 438.8671875,
+  "rms": 0.008744599176285296,
+  "nreal": 2
+ },
+ "specsim3d_256": {
+  "n": 256,
+  "periodic": [
+   512,
+   512,
+   512
+  ],
+  "wall_s": 4.152331590652466,
+  "spectrum_s": 2.07,
+  "per_realization_s": 1.78,
+  "rss_mb": 3334.734375,
+  "rms": 0.0018382051397976187,
+  "nreal": 1
+ },
+ "gstools_32": {
+  "n": 32,
+  "per_realization_s": 0.6903421878814697,
+  "rms": 0.20114018864407157
+ },
+ "gstools_64": {
+  "n": 64,
+  "per_realization_s": 4.860740900039673,
+  "rms": 0.2039287046064584
+ },
+ "gstools_128": {
+  "n": 128,
+  "per_realization_s": 38.04736661911011,
+  "rms": 0.20515628274742523
+ },
+ "system": {
+  "date": "2026-10-30 10:24",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.10",
+  "numpy": "2.5.4",
+  "cores": 20,
+  "omp_threads": "20",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12700",
+  "ram_gb": 31.7,
+  "compiler": "not found in PATH (run from the Intel oneAPI command prompt, or set SPECSIM3D_COMPILER)",
+  "gstools": "1.7.0",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2"
+ }
+}

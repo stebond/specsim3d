@@ -1,0 +1,20 @@
+case,model,n_lags,rms,mc_noise,rms_over_noise,bias
+A iso 15/15/15,spherical,150,0.0132,0.0212,0.62,0.0058
+A iso 15/15/15,exponential,300,0.0228,0.0192,1.19,0.0128
+A iso 15/15/15,gaussian,268,0.024,0.0347,0.69,0.0
+B 2:1 20/10/10,spherical,81,0.0158,0.0164,0.97,0.0118
+B 2:1 20/10/10,exponential,226,0.0139,0.0159,0.87,0.0003
+B 2:1 20/10/10,gaussian,174,0.0238,0.0244,0.98,0.0083
+C 4:1 20/5/5,spherical,26,0.0108,0.0086,1.26,0.0084
+C 4:1 20/5/5,exponential,46,0.0058,0.0062,0.93,0.0038
+C 4:1 20/5/5,gaussian,37,0.0123,0.0114,1.08,0.0096
+D layered 10/10/2,spherical,5,0.0062,0.005,1.24,0.0059
+D layered 10/10/2,exponential,16,0.0062,0.0048,1.29,0.0056
+D layered 10/10/2,gaussian,13,0.0098,0.0088,1.11,0.0086
+E extreme 40/4/2,spherical,18,0.0072,0.0084,0.86,0.0044
+E extreme 40/4/2,exponential,36,0.0064,0.0077,0.83,0.0015
+E extreme 40/4/2,gaussian,31,0.0092,0.0125,0.74,0.0049
+F rotated 20/8/4 (az30 dip20 plg15),spherical,24,0.0109,0.0093,1.17,0.0088
+F rotated 20/8/4 (az30 dip20 plg15),exponential,73,0.0087,0.0089,0.98,0.0012
+F rotated 20/8/4 (az30 dip20 plg15),gaussian,55,0.0146,0.0166,0.88,0.011
+G nested + nugget 0.1 (sph + exp),nested,33,0.0095,0.008,1.19,0.0086

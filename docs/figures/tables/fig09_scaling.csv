@@ -1,0 +1,5 @@
+n,periodic_grid,spectrum_s,s_per_realization,peak_rss_mb,rms_one_realization,gstools_s_per_realization,gstools_rms
+32,64x64x64,0.01,0.0,2,0.0377,0.69,0.201
+64,128x128x128,0.03,0.02,55,0.0194,4.86,0.204
+128,256x256x256,0.27,0.27,439,0.0087,38.05,0.205
+256,512x512x512,2.07,1.78,3335,0.0018,,

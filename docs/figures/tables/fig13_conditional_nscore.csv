@@ -1,0 +1,8 @@
+quantity,value
+max |realization - data| / max data at data nodes,4.69e-08
+mean truth,3.808
+mean data,3.804
+mean realizations,3.804
+variance truth,12.231
+variance data,11.779
+variance realizations,13.438

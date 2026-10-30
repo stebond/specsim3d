@@ -1,0 +1,7 @@
+model;method;time_s;mean_variance;RMS_mean_N45E;RMS_single_N45E;error_lag1_N45E;RMS_mean_N45W;RMS_single_N45W;error_lag1_N45W;RMS_mean_Vertical;RMS_single_Vertical;error_lag1_Vertical
+exponential;SPECSIM3D padded (ipad=1);0.15;0.986;0.004;0.029;-0.000;0.001;0.028;+0.001;0.002;0.029;+0.001
+exponential;gstlearn spectral (ns=1024);12.36;0.939;0.045;0.080;-0.010;0.021;0.065;-0.003;0.029;0.088;-0.018
+exponential;gstlearn spectral (ns=10000);120.45;0.998;0.010;0.052;-0.006;0.012;0.029;-0.004;0.008;0.047;+0.001
+gaussian;SPECSIM3D padded (ipad=1);0.18;0.979;0.003;0.056;+0.000;0.004;0.054;-0.001;0.002;0.051;+0.000
+gaussian;gstlearn spectral (ns=1024);12.10;0.925;0.071;0.092;-0.002;0.016;0.072;+0.003;0.084;0.086;-0.004
+gaussian;gstlearn spectral (ns=10000);119.18;0.990;0.011;0.016;-0.000;0.027;0.037;+0.002;0.008;0.048;+0.003

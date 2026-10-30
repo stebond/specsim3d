@@ -1,0 +1,5 @@
+nodes,ndata,t_uncond_s,t_cond_total_s,t_conditioning_s,t_gstools_cond_10real_s
+8192,20,0.1,0.12,0.03,1.78
+65536,131,0.1,0.22,0.13,21.29
+524288,1048,0.54,1.66,1.13,nan
+4194304,8388,4.49,14.37,9.89,nan

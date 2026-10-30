@@ -1,0 +1,26 @@
+# build products
+*.exe
+*.dll
+*.obj
+*.mod
+*.pdb
+*.ilk
+# local results of tests, validation and examples
+validation/
+output/
+tests/work/
+tests/results/
+docs/figures/_work/
+par/conditional/*.bin
+par/conditional/*.vtk
+par/conditional/*_conddata.dat
+par/conditional/*.trn
+# local environment records
+specsim_python.txt
+python_env.txt
+build_info.txt
+compiler.txt
+__pycache__/
+*.pyc
+# submission files
+docs/cageo/

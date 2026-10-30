@@ -1,0 +1,4 @@
+n,fortran_s_per_realization,numpy_s_per_realization,speedup
+64,0.0015,0.0788,52.5
+128,0.0067,0.8406,126.1
+256,0.19,7.7576,40.8

@@ -1,0 +1,25 @@
+                  Parameters for SPECSIM3D
+                  ************************
+
+START OF PARAMETERS:
+0.0 0.0 0.0                   xmin ymin zmin  (coordinates of the first node)
+1.0 1.0 1.0                   dx dy dz  (grid spacing)
+64 64 16                      nx ny nz  (nodes per axis, nz = 1 gives a 2D field)
+0.0 1                         nugget nstruct  (nugget variance, number of nested structures)
+2 1.0 20 10 5 45.0 0.0 0.0    itype sill ahmax ahmin avert azimuth dip plunge  (itype: 1 spherical, 2 exponential, 3 gaussian)
+4002 20 1                     iseed nreal ipad  (random seed, number of realizations, ipad: 1 = padded periodic grid)
+example_cond2_lognormal_nscore_3d
+2                             nout  (number of outputs; one code per line follows)
+4                             output code: 4 = one VTK XML file <base>.vti with all the realizations (ParaView opens it directly)
+3                             output code: 3 = raw float32 file <base>.bin (realizations consecutive, x fastest)
+1                             icond  (0 = unconditional simulation, 1 = conditional: the conditioning block follows)
+data_lognormal_3d.dat         datafile (GSLIB format: title, nvar, nvar names, data rows)
+1 2 3 4 0                     columns: x y z value weight (0 = not used; z = 0 for 2D data)
+0.0 1.0e21                    trimming limits on the value
+1 0.0                         itrans = 1: normal score transform of the data and back transform of the realizations
+0.0 150.0                     zmin zmax (back transform limits)
+1 0.0                         lower tail: 1 = linear, 2 = power (omega)
+1 0.0                         upper tail: 1 = linear, 2 = power (omega), 4 = hyperbolic (omega)
+30.0 15.0 8.0                 search ellipsoid radii: maximum, medium (horizontal), vertical
+45.0 0.0 0.0                  search ellipsoid angles: azimuth, dip, plunge
+24                            ndmax

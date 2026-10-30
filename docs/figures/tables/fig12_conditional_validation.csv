@@ -1,0 +1,3 @@
+code,nreal,rms_mean_diff,mc_error_mean,rms_var_diff,mc_error_var,var_slope,std_of_standardized_mean_diff,max_abs_data_error,seconds_per_realization
+SPECSIM3D,200,0.0674,0.0653,0.0862,0.0863,1.0012,1.022,7.45e-09,0.007
+GSTools CondSRF,100,0.0914,0.0923,0.1228,0.1224,1.0089,0.989,1.36e-07,1.254

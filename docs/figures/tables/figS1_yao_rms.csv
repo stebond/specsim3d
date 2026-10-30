@@ -1,0 +1,4 @@
+direction,rms_mean_vs_model,max_abs_error
+N45E (a = 20),0.001,0.0017
+N45W (a = 10),0.0066,0.0089
+vertical (a = 5),0.0034,0.0059

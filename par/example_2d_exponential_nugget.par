@@ -1,0 +1,15 @@
+                  Parameters for SPECSIM3D
+                  ************************
+
+START OF PARAMETERS:
+0.0 0.0 0.0                   xmin ymin zmin  (coordinates of the first node)
+1.0 1.0 1.0                   dx dy dz  (grid spacing)
+128 128 1                     nx ny nz  (nodes per axis, nz = 1 gives a 2D field)
+0.3 1                         nugget nstruct  (nugget variance, number of nested structures)
+2 0.7 30.0 30.0 30.0 45.0 0.0 0.0   itype sill ahmax ahmin avert azimuth dip plunge  (itype: 1 spherical, 2 exponential, 3 gaussian)
+12345 20 1                    iseed nreal ipad  (random seed, number of realizations, ipad: 1 = padded periodic grid)
+example_2d_exponential_nugget
+2                             nout  (number of outputs; one code per line follows)
+1                             output code: 1 = GSLIB grid file <base>.out
+4                             output code: 4 = one VTK XML file <base>.vti with all the realizations (ParaView opens it directly)
+0                             icond  (0 = unconditional simulation, 1 = conditional: the conditioning block follows)

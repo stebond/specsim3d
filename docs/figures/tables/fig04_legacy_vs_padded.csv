@@ -1,0 +1,7 @@
+case,quantity,value
+legacy grid (ipad = 0),"gaussian N45E, h > 25: mean gamma",0.9397
+padded grid (ipad = 1),"gaussian N45E, h > 25: mean gamma",0.9893
+legacy (ipad = 0),"spherical, 300 realizations: sd of sample variance",0.0
+legacy (ipad = 0),"spherical, 300 realizations: sd of sample mean",0.0892
+padded (ipad = 1),"spherical, 300 realizations: sd of sample variance",0.05821
+padded (ipad = 1),"spherical, 300 realizations: sd of sample mean",0.08017
