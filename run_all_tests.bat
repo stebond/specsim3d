@@ -20,6 +20,7 @@ call :run test_conditional
 call :run test_rotation
 call :run test_bias
 call :run test_vario_fortran
+call :run test_gauss_amplitudes
 %PY% -c "import gstools" 2>nul
 if errorlevel 1 (
   echo.

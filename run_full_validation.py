@@ -4,7 +4,7 @@
 What it does (everything automatic, results in  <package>/validation/<timestamp>/ ):
   0. records the machine: CPU, RAM, cores, OS, Fortran compiler (ifx / ifort / gfortran) version,
      Python / numpy / scipy / matplotlib / GSTools versions, build date of specsim3d(.exe)  -> system_info.json
-  1. tests that do not need GSTools: test_conditional, test_rotation, test_bias, test_vario_fortran
+  1. tests that do not need GSTools: test_conditional, test_rotation, test_bias, test_vario_fortran, test_gauss_amplitudes
   2. tests that compare with GSTools (and gstlearn simuSpectral, exponential + Gaussian only), run TWICE in separate processes:
         a) "released"  : GSTools exactly as installed (e.g. 1.7.0)
         b) "modified"  : same GSTools + the author's spherical-3D patch (docs/gstools_patch)
@@ -208,7 +208,7 @@ def main():
     t00 = time.time()
 
     if not args.skip_tests:
-        for t in ("test_conditional", "test_rotation", "test_bias", "test_vario_fortran"):
+        for t in ("test_conditional", "test_rotation", "test_bias", "test_vario_fortran", "test_gauss_amplitudes"):
             run_stage("tests", t, [sys.executable, os.path.join(TESTS, t + ".py")], os.path.join(OUT, t + ".log"))
         collect_results(os.path.join(OUT, "results_nogstools"))
 

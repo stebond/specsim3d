@@ -112,7 +112,8 @@ nx ny nz                  number of nodes (nz = 1 gives the 2D case)
 nugget nstruct            nugget variance, number of nested structures
 itype sill ahmax ahmin avert az dip plg     one line per structure
                           itype: 1 spherical, 2 exponential, 3 gaussian
-iseed nreal ipad          random seed, number of realizations, 0 compact / 1 padded grid
+iseed nreal ipad [igauss] random seed, number of realizations, 0 compact / 1 padded grid,
+                          optional igauss = 1: Gaussian spectral coefficients (default 0)
 outbase                   base name of the output files (no comment on this line)
 nout                      number of outputs
 code                      nout lines, one output code each:

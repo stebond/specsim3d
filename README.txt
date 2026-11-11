@@ -54,6 +54,9 @@ NOTES
 - Practical ranges as in GSLIB (exponential exp(-3r), gaussian exp(-3r^2)); SPECSIM2 used exp(-h/a), exp(-h^2/a^2).
 - ipad=1 (recommended): periodic grid large enough for an exact embedding. ipad=0 reproduces the legacy rule
   (np = power of 2 >= n): the field is periodic, sample mean/variance are almost deterministic.
+- igauss=1 (optional fourth value of the seed line, or --gauss on the command line): the spectral coefficients are
+  independent Gaussian variables instead of fixed amplitudes with random phases, so that the field is exactly
+  Gaussian and the sample mean/variance fluctuate also on the compact grid (default 0 reproduces version 1.0.0).
 - nz=1 gives the 2D case (validated against SPECSIM2.EXE output).
 - Positive dip = major axis towards +z (verified numerically; compare with your own convention).
 - GSTools 1.7.0 note: wave numbers are drawn by inversion only for Gaussian/Exponential in 1D and 2D; in 3D all

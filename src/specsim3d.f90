@@ -16,6 +16,8 @@
 !           2) a 3D FFT gives the spectral density S (real, because
 !              C(h)=C(-h));  amplitude = sqrt(S)
 !           3) uniform random phases with Hermitian symmetry are added
+!              (default), or, with igauss=1, independent Gaussian real and
+!              imaginary parts of the spectral coefficients (see below)
 !           4) an inverse 3D FFT gives the real realization.
 !           Var(z) = sum(S) = C(0) (up to clipped negative values).
 !
@@ -42,7 +44,9 @@
 !    nx ny nz
 !    nugget nstruct
 !    itype sill ahmax ahmin avert azimuth dip plunge   (nstruct lines)
-!    iseed nreal ipad
+!    iseed nreal ipad [igauss]           (igauss optional: 0 fixed amplitudes and random
+!                                         phases, the default; 1 Gaussian spectral coefficients;
+!                                         --gauss on the command line is equivalent to igauss=1)
 !    output_base_name                    (no annotation on this line)
 !    nout                                (number of outputs)
 !    code                                (nout lines: 1 GSLIB .out, 2 binary VTK
@@ -189,6 +193,16 @@ contains
     rng_state = mod(16807_8*rng_state, 2147483647_8)
     u = real(rng_state, dp)/2147483647.0d0
   end function urand
+
+  !-------------------------------------------------------------------
+  subroutine gauss_pair(g1, g2)   ! two independent N(0,1) values (Box-Muller)
+    real(dp), intent(out) :: g1, g2
+    real(dp) :: u1, u2, rr
+    u1 = urand(); u2 = urand()
+    rr = sqrt(-2.0d0*log(u1))
+    g1 = rr*cos(2.0d0*pi*u2)
+    g2 = rr*sin(2.0d0*pi*u2)
+  end subroutine gauss_pair
 
   !-------------------------------------------------------------------
   subroutine fft1d(x, n, tw)
@@ -1076,11 +1090,11 @@ program specsim3d
   character(len=256) :: hline
   logical :: hdrfound
   integer :: ihdr, ic
-  integer :: nst, nx, ny, nz, iseed, nreal, ipad
+  integer :: nst, nx, ny, nz, iseed, nreal, ipad, igauss
   integer :: npx, npy, npz, ntot, s, i, j, k, r, ip, jp, kp, lin, linp
   integer :: rx, ry, rz, t0, t1, tr
   real(dp) :: xmin, ymin, zmin, dx, dy, dz, nugget
-  real(dp) :: ex, ey, ez, u, phi, a, c0, sneg, spos, maximag, maxreal
+  real(dp) :: ex, ey, ez, u, phi, a, c0, sneg, spos, maximag, maxreal, g1, g2
   real(dp) :: zmean, zvar
   type(structure) :: st(maxst)
   complex(dp), allocatable :: c(:,:,:)
@@ -1098,11 +1112,14 @@ program specsim3d
   parfile = 'SPECSIM3D.PAR'
   if (command_argument_count() >= 1) call get_command_argument(1, parfile)
   binout = .false.; vtkall = .false.; dovario = .false.; varfile = ''; docond = .false.; condfile = ''; ncli = 0
+  igauss = 0
   narg = command_argument_count()
   iarg = 2
   do while (iarg <= narg)
     call get_command_argument(iarg, arg)
     select case (trim(arg))
+    case ('--gauss')
+      igauss = 1
     case ('--bin')
       binout = .true.; ncli = ncli + 1
     case ('--vtk')
@@ -1153,7 +1170,16 @@ program specsim3d
       stop 'ranges must be positive'
     call setrot(st(s))
   end do
-  read(10,*) iseed, nreal, ipad
+  read(10,'(a)') hline
+  read(hline,*,iostat=ios) iseed, nreal, ipad, ic
+  if (ios == 0) then
+    if (ic == 1) igauss = 1               ! optional fourth value; --gauss also sets it
+    if (ic < 0 .or. ic > 1) then
+      write(*,*) 'parameter file: igauss must be 0 or 1'; stop 1
+    end if
+  else
+    read(hline,*) iseed, nreal, ipad       ! three values; any text after them is ignored
+  end if
   read(10,'(a)') outbase
   outbase = adjustl(outbase)
   ! ---- optional extension of the parameter file: outputs and conditioning ----
@@ -1264,6 +1290,11 @@ program specsim3d
   write(*,'(a,f10.5)')  ' target variance C(0)           : ', c0
   write(*,'(a,f10.5)')  ' sum of positive spectrum       : ', spos
   write(*,'(a,es10.3)') ' negative spectral mass / total : ', abs(sneg)/(spos - sneg)
+  if (igauss == 1) then
+    write(*,*) 'spectral coefficients : Gaussian (exactly Gaussian field)'
+  else
+    write(*,*) 'spectral coefficients : fixed amplitudes, random phases (default)'
+  end if
 
   call system_clock(tsp)
   write(*,'(a,f8.2,a)') ' time covariance+spectrum: ', real(tsp-t0)/real(tr), ' s'
@@ -1279,11 +1310,20 @@ program specsim3d
           lin  = i  + npx*(j  + npy*k)
           linp = ip + npx*(jp + npy*kp)
           if (lin < linp) then
-            phi = 2.0d0*pi*urand()
-            c(i+1,j+1,k+1)    = amp(i+1,j+1,k+1)*cmplx(cos(phi),  sin(phi), dp)
-            c(ip+1,jp+1,kp+1) = amp(ip+1,jp+1,kp+1)*cmplx(cos(phi), -sin(phi), dp)
+            if (igauss == 1) then          ! Gaussian coefficients, E|c|^2 = S
+              call gauss_pair(g1, g2)
+              c(i+1,j+1,k+1)    = amp(i+1,j+1,k+1)*cmplx(g1,  g2, dp)*sqrt(0.5d0)
+              c(ip+1,jp+1,kp+1) = amp(ip+1,jp+1,kp+1)*cmplx(g1, -g2, dp)*sqrt(0.5d0)
+            else
+              phi = 2.0d0*pi*urand()
+              c(i+1,j+1,k+1)    = amp(i+1,j+1,k+1)*cmplx(cos(phi),  sin(phi), dp)
+              c(ip+1,jp+1,kp+1) = amp(ip+1,jp+1,kp+1)*cmplx(cos(phi), -sin(phi), dp)
+            end if
           else if (lin == linp) then
-            if (urand() < 0.5d0) then
+            if (igauss == 1) then          ! real Gaussian coefficient, variance S
+              call gauss_pair(g1, g2)
+              c(i+1,j+1,k+1) = cmplx(amp(i+1,j+1,k+1)*g1, 0.0d0, dp)
+            else if (urand() < 0.5d0) then
               c(i+1,j+1,k+1) = cmplx( amp(i+1,j+1,k+1), 0.0d0, dp)
             else
               c(i+1,j+1,k+1) = cmplx(-amp(i+1,j+1,k+1), 0.0d0, dp)
